@@ -2,7 +2,7 @@ package ss3_mang_array;
 
 import java.util.Scanner;
 
-public class tinh_tong_cac_so_o_duong_cheo_cua_matran_vuong_mang2chieu {
+public class TinhTongCacSoCuaMaTranVuongMang2Chieu {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 

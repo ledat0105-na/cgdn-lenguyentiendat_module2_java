@@ -1,6 +1,6 @@
 package ss2_vong_lap_loop;
 
-public class hien_thi_cac_so_ngto_nho_hon_100 {
+public class HienThiCacSoNgtoNhoHon100 {
     public static void main(String[] args) {
         System.out.println("Các số nguyên tố nhỏ hơn 100 là: ");
 

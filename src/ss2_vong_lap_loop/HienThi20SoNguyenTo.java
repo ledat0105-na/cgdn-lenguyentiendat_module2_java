@@ -2,7 +2,7 @@ package ss2_vong_lap_loop;
 
 import java.util.Scanner;
 
-public class hien_thi_20_so_ngto {
+public class HienThi20SoNguyenTo {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhập số lượng số nguyên tố cần hiển thị: ");

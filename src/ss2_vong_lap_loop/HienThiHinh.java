@@ -2,7 +2,7 @@ package ss2_vong_lap_loop;
 
 import java.util.Scanner;
 
-public class hien_thi_hinh {
+public class HienThiHinh {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int luachon;

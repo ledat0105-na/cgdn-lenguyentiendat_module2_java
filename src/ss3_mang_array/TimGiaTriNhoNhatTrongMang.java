@@ -2,7 +2,7 @@ package ss3_mang_array;
 
 import java.util.Scanner;
 
-public class tim_gia_tri_nho_nhat_trong_mang {
+public class TimGiaTriNhoNhatTrongMang {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 

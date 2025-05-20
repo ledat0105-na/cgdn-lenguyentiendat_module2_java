@@ -1,6 +1,6 @@
 package ss3_mang_array;
 
-public class tim_phan_tu_lon_nhat_mang2chieu {
+public class TimPhanTuLonNhatMang2Chieu {
     public static void main(String[] args) {
         double[][] maTran = {
                 {1.5, 2.8, 3.9},

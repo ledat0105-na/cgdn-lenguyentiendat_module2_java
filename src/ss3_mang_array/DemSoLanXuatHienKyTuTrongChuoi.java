@@ -2,7 +2,7 @@ package ss3_mang_array;
 
 import java.util.Scanner;
 
-public class dem_so_lan_xuat_hien_ky_tu_trong_chuoi {
+public class DemSoLanXuatHienKyTuTrongChuoi {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String chuoi = "Lap trinh java co ban";
