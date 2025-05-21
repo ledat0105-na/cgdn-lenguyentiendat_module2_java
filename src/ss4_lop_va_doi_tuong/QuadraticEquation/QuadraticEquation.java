@@ -30,7 +30,7 @@ public class QuadraticEquation {
         if (delta >= 0) {
             return (-b + Math.pow(delta, 0.5)) / (2 * a);
         } else {
-            return Double.NaN; // Không có nghiệm thực
+            return Double.NaN;
         }
     }
 

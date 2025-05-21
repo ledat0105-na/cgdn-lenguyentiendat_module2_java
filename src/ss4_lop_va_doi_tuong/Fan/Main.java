@@ -2,7 +2,6 @@ package ss4_lop_va_doi_tuong.Fan;
 
 public class Main {
     public static void main(String[] args) {
-        // Fan 1: speed lớn nhất, radius 10, color yellow, quạt bật
         OnlyFan fan1 = new OnlyFan();
         fan1.setSpeed(OnlyFan.FAST);
         fan1.setRadius(10);
