@@ -1,6 +1,6 @@
 package ss5_static.quan_ly_san_pham;
 
-public class Product {
+public class Student {
     private String id;
     private String name;
     private double price;
@@ -8,10 +8,10 @@ public class Product {
     public static int count = 0;
     public static int nextId = 1;
 
-    public Product() {
+    public Student() {
     }
 
-    public Product(String name, double price) {
+    public Student(String name, double price) {
         this.id = "SP" + nextId++;
         this.name = name;
         this.price = price;
@@ -44,7 +44,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" +
+        return "Student{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", price=" + price +
