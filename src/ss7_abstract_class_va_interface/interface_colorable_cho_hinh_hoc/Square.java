@@ -1,4 +1,4 @@
-package ss7_truu_tuong_abstract_class_va_giao_dien_interface.interface_colorable_cho_hinh_hoc;
+package ss7_abstract_class_va_interface.interface_colorable_cho_hinh_hoc;
 
 public class Square extends Shape implements Colorable {
     private double side;

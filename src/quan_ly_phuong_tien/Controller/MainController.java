@@ -41,7 +41,7 @@ public class MainController {
 
     public void addPhuongTien() {
         System.out.println("1. Thêm Xe Tải");
-        System.out.println("2. Thêm Oto");
+        System.out.println("2. Thêm ÔTô");
         System.out.println("3. Thêm Xe Máy");
         System.out.print("Mời chọn các lựa chọn sau: ");
         int type = Integer.parseInt(scanner.nextLine());
@@ -83,7 +83,7 @@ public class MainController {
 
     public void displayPhuongTien() {
         System.out.println("1. Hiển thị Xe Tải");
-        System.out.println("2. Hiển thị Xe Oto");
+        System.out.println("2. Hiển thị Xe ÔTô");
         System.out.println("3. Hiển thị Xe Máy");
         System.out.print("Vui lòng chọn loại phương tiện cần hiển thị: ");
         int choice = Integer.parseInt(scanner.nextLine());
@@ -94,7 +94,7 @@ public class MainController {
                 implXeTaiService.displayXeTai();
                 break;
             case 2:
-                System.out.println("----- Danh sách Xe Ô tô -----");
+                System.out.println("----- Danh sách Xe Ôtô -----");
                 implOtoService.displayOto();
                 break;
             case 3:
@@ -107,15 +107,37 @@ public class MainController {
     }
 
     public void deletePhuongtien() {
-        System.out.println("Nhập phương tiện muốn xóa: ");
+        System.out.println("Chọn loại phương tiện muốn xóa:");
+        System.out.println("1. Xe Tải");
+        System.out.println("2. Xe Ôtô");
+        System.out.println("3. Xe Máy");
+        System.out.print("Nhập lựa chọn: ");
+        int loaiXe = Integer.parseInt(scanner.nextLine());
+
+        System.out.print("Nhập biển kiểm soát (BKS) của xe cần xóa: ");
         String idVehicle = scanner.nextLine();
-        System.out.println("Bạn chắc chắn xóa phương tiện này (Yes/No): ");
+
+        System.out.print("Bạn chắc chắn muốn xóa phương tiện này? (Yes/No): ");
         String confirm = scanner.nextLine();
+
         if (confirm.equalsIgnoreCase("Yes")) {
-            implXeTaiService.deleteIdXeTai(idVehicle);
-            implOtoService.deleteOto(idVehicle);
-            implXeMayService.deleteIdXeMay(idVehicle);
-            System.out.println("Phương tiện đã xóa thành công !!!");
+            switch (loaiXe) {
+                case 1:
+                    implXeTaiService.deleteIdXeTai(idVehicle);
+                    break;
+                case 2:
+                    implOtoService.deleteOto(idVehicle);
+                    break;
+                case 3:
+                    implXeMayService.deleteIdXeMay(idVehicle);
+                    break;
+                default:
+                    System.out.println("Lựa chọn không hợp lệ.");
+                    return;
+            }
+            System.out.println("Phương tiện đã được xóa (nếu tìm thấy).");
+        } else {
+            System.out.println("Hủy xóa phương tiện.");
         }
     }
 }

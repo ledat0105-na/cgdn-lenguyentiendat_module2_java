@@ -1,44 +1,48 @@
 package quan_ly_phuong_tien.Model.Service;
 
 import quan_ly_phuong_tien.Model.Entity.XeTaiEntity;
+import quan_ly_phuong_tien.Model.Entity.PhuongTien;
 import quan_ly_phuong_tien.Model.Repository.PhuongTienRepository;
 
-import java.util.Iterator;
+import java.util.List;
 
 public class ImplXeTaiService implements IXeTaiService {
 
+    private final PhuongTienRepository repository = new PhuongTienRepository();
+
     @Override
     public void addXeTai(XeTaiEntity xeTai) {
-        PhuongTienRepository.XeTai.add(xeTai);
+        repository.add(xeTai);
     }
 
     @Override
     public void displayXeTai() {
-        if (PhuongTienRepository.XeTai.isEmpty()) {
-            System.out.println("Không có xe tải nào để hiển thị.");
-            return;
+        List<PhuongTien> danhSach = repository.findAll();
+        boolean found = false;
+
+        for (PhuongTien pt : danhSach) {
+            if (pt instanceof XeTaiEntity) {
+                System.out.println(pt);
+                found = true;
+            }
         }
-        for (XeTaiEntity xeTai : PhuongTienRepository.XeTai) {
-            System.out.println(xeTai);
+
+        if (!found) {
+            System.out.println("Không có xe tải nào để hiển thị.");
         }
     }
 
     @Override
     public void deleteIdXeTai(String bienKiemSoatXeTai) {
-        Iterator<XeTaiEntity> iterator = PhuongTienRepository.XeTai.iterator();
-        boolean found = false;
-        while (iterator.hasNext()) {
-            XeTaiEntity xeTai = iterator.next();
-            if (xeTai.getBienKiemSoat().equalsIgnoreCase(bienKiemSoatXeTai)) {
-                iterator.remove();
-                found = true;
+        List<PhuongTien> danhSach = repository.findAll();
+        boolean deleted = false;
+
+        for (PhuongTien pt : danhSach) {
+            if (pt instanceof XeTaiEntity &&
+                    pt.getBienKiemSoat().equalsIgnoreCase(bienKiemSoatXeTai)) {
+                deleted = repository.deleteByBienSo(pt.getBienKiemSoat());
                 break;
             }
-        }
-        if (found) {
-            System.out.println("Đã xóa xe tải có BKS: " + bienKiemSoatXeTai);
-        } else {
-            System.out.println("Không tìm thấy xe tải với BKS: " + bienKiemSoatXeTai);
         }
     }
 }

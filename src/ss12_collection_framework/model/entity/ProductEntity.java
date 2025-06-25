@@ -1,14 +1,14 @@
 package ss12_collection_framework.model.entity;
 
-public class Product {
+public class ProductEntity {
     private int id;
     private String name;
     private double price;
 
-    public Product() {
+    public ProductEntity() {
     }
 
-    public Product(int id, String name, double price) {
+    public ProductEntity(int id, String name, double price) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -40,7 +40,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" +
+        return "ProductEntity{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", price=" + price +

@@ -1,10 +1,9 @@
 package ss12_collection_framework.view;
 
-import ss12_collection_framework.model.entity.Product;
+import ss12_collection_framework.model.entity.ProductEntity;
 import ss12_collection_framework.controller.ProductController;
-
-import java.util.Scanner;
 import java.util.List;
+import java.util.Scanner;
 
 public class ProductView {
     private final ProductController controller = new ProductController();
@@ -50,13 +49,14 @@ public class ProductView {
                     break;
                 case 0:
                     System.out.println("Chương trình đã dừng!");
+                    return;
                 default:
                     System.out.println("Chọn sai, vui lòng thử lại!");
             }
         }
     }
 
-    private void addProduct() {
+    public void addProduct() {
         System.out.print("ID: ");
         int id = Integer.parseInt(sc.nextLine());
         System.out.print("Tên: ");
@@ -67,7 +67,7 @@ public class ProductView {
         System.out.println("Thêm sản phẩm thành công!");
     }
 
-    private void editProduct() {
+    public void editProduct() {
         System.out.print("ID cần sửa: ");
         int id = Integer.parseInt(sc.nextLine());
         System.out.print("Tên mới: ");
@@ -78,34 +78,34 @@ public class ProductView {
         System.out.println("Cập nhật sản phẩm thành công!");
     }
 
-    private void deleteProduct() {
+    public void deleteProduct() {
         System.out.print("ID cần xoá: ");
         int id = Integer.parseInt(sc.nextLine());
         controller.deleteProduct(id);
         System.out.println("Xóa sản phẩm thành công!");
     }
 
-    private void showAll() {
+    public void showAll() {
         System.out.println("----- DANH SÁCH SẢN PHẨM -----");
-        List<Product> products = controller.showAll();
+        List<ProductEntity> products = controller.showAll();
         if (products.isEmpty()) {
             System.out.println("Danh sách trống.");
         } else {
-            for (Product p : products) {
+            for (ProductEntity p : products) {
                 System.out.println(p);
             }
         }
     }
 
-    private void searchByName() {
+    public void searchByName() {
         System.out.print("Nhập tên: ");
         String name = sc.nextLine();
         System.out.println("SẢN PHẨM ĐÃ TÌM KIẾM: ");
-        List<Product> result = controller.searchProduct(name);
+        List<ProductEntity> result = controller.searchProduct(name);
         if (result.isEmpty()) {
             System.out.println("Không tìm thấy.");
         } else {
-            for (Product p : result) {
+            for (ProductEntity p : result) {
                 System.out.println(p);
             }
         }

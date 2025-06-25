@@ -21,4 +21,9 @@ public class OtoEntity extends PhuongTien {
                 ", soChoNgoi=" + soChoNgoi +
                 '}';
     }
+
+    @Override
+    public String getInfoToCSV() {
+        return "";
+    }
 }

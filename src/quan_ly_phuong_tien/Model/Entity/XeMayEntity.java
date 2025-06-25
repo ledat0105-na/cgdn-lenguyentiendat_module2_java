@@ -15,7 +15,13 @@ public class XeMayEntity extends PhuongTien {
     public String toString() {
         return "XeMayEntity{" +
                 super.toString() +
-                "congSuat=" + congSuat +
+                ", congSuat=" + congSuat +
                 '}';
+    }
+
+    @Override
+    public String getInfoToCSV() {
+        return "XEMAY," + getBienKiemSoat() + "," + getHangSanXuat() + "," + getNamSanXuat() + "," +
+                getChuSoHuu() + "," + congSuat;
     }
 }

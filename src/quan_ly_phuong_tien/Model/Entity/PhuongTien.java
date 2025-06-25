@@ -58,4 +58,5 @@ public abstract class PhuongTien {
                 ", chuSoHuu='" + chuSoHuu + '\'' +
                 '}';
     }
+    public abstract String getInfoToCSV();
 }

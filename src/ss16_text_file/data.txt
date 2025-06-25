@@ -1,0 +1,4 @@
+Chào bạn!
+Đây là ví dụ file văn bản để kiểm tra sao chép trong Java.
+Bạn có thể mở file này bằng Notepad hoặc bất kỳ trình soạn thảo nào.
+Chúc bạn học tốt!

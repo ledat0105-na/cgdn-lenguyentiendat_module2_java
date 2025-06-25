@@ -15,7 +15,13 @@ public class XeTaiEntity extends PhuongTien {
     public String toString() {
         return "XeTaiEntity{" +
                 super.toString() +
-                "trongTai=" + trongTai +
+                ", trongTai=" + trongTai +
                 '}';
+    }
+
+    @Override
+    public String getInfoToCSV() {
+        return "XETAI," + getBienKiemSoat() + "," + getHangSanXuat() + "," +
+                getNamSanXuat() + "," + getChuSoHuu() + "," + trongTai;
     }
 }

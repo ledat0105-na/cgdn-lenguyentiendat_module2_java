@@ -1,4 +1,4 @@
-package ss7_truu_tuong_abstract_class_va_giao_dien_interface.interface_resizeable_cho_hinh_hoc;
+package ss7_abstract_class_va_interface.interface_resizeable_cho_hinh_hoc;
 
 import java.util.Random;
 
