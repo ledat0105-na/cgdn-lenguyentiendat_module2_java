@@ -1,48 +1,52 @@
 package quan_ly_phuong_tien.Model.Service;
 
 import quan_ly_phuong_tien.Model.Entity.XeTaiEntity;
-import quan_ly_phuong_tien.Model.Entity.PhuongTien;
-import quan_ly_phuong_tien.Model.Repository.PhuongTienRepository;
+import quan_ly_phuong_tien.Model.Repository.IXeTaiRepository;
+import quan_ly_phuong_tien.Model.Repository.XeTaiRepository;
 
+import java.util.Iterator;
 import java.util.List;
 
 public class ImplXeTaiService implements IXeTaiService {
 
-    private final PhuongTienRepository repository = new PhuongTienRepository();
+    private final IXeTaiRepository repository = new XeTaiRepository();
 
     @Override
-    public void addXeTai(XeTaiEntity xeTai) {
-        repository.add(xeTai);
+    public void addXeTai(XeTaiEntity xe) {
+        repository.add(xe);
     }
 
     @Override
     public void displayXeTai() {
-        List<PhuongTien> danhSach = repository.findAll();
-        boolean found = false;
-
-        for (PhuongTien pt : danhSach) {
-            if (pt instanceof XeTaiEntity) {
-                System.out.println(pt);
-                found = true;
-            }
-        }
-
-        if (!found) {
+        List<XeTaiEntity> list = repository.findAll();
+        if (list.isEmpty()) {
             System.out.println("Không có xe tải nào để hiển thị.");
+        } else {
+            for (XeTaiEntity xe : list) {
+                System.out.println(xe);
+            }
         }
     }
 
     @Override
-    public void deleteIdXeTai(String bienKiemSoatXeTai) {
-        List<PhuongTien> danhSach = repository.findAll();
+    public boolean deleteXeTai(String bienSo) {
+        List<XeTaiEntity> danhSach = repository.findAll();
         boolean deleted = false;
 
-        for (PhuongTien pt : danhSach) {
-            if (pt instanceof XeTaiEntity &&
-                    pt.getBienKiemSoat().equalsIgnoreCase(bienKiemSoatXeTai)) {
-                deleted = repository.deleteByBienSo(pt.getBienKiemSoat());
+        Iterator<XeTaiEntity> iterator = danhSach.iterator();
+        while (iterator.hasNext()) {
+            XeTaiEntity xe = iterator.next();
+            if (xe.getBienKiemSoat().equalsIgnoreCase(bienSo)) {
+                iterator.remove();
+                deleted = true;
                 break;
             }
         }
+
+        if (deleted) {
+            repository.updateAll(danhSach);
+        }
+
+        return deleted;
     }
 }

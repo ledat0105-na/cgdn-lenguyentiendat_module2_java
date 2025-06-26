@@ -1,14 +1,15 @@
 package quan_ly_phuong_tien.Model.Service;
 
 import quan_ly_phuong_tien.Model.Entity.OtoEntity;
-import quan_ly_phuong_tien.Model.Entity.PhuongTien;
-import quan_ly_phuong_tien.Model.Repository.PhuongTienRepository;
+import quan_ly_phuong_tien.Model.Repository.IOtoRepository;
+import quan_ly_phuong_tien.Model.Repository.OtoRepository;
 
+import java.util.Iterator;
 import java.util.List;
 
 public class ImplOtoService implements IOtoService {
 
-    private final PhuongTienRepository repository = new PhuongTienRepository();
+    private final IOtoRepository repository = new OtoRepository();
 
     @Override
     public void addOto(OtoEntity oto) {
@@ -17,36 +18,35 @@ public class ImplOtoService implements IOtoService {
 
     @Override
     public void displayOto() {
-        List<PhuongTien> danhSach = repository.findAll();
-        boolean found = false;
-        for (PhuongTien pt : danhSach) {
-            if (pt instanceof OtoEntity) {
-                System.out.println(pt);
-                found = true;
-            }
-        }
-        if (!found) {
+        List<OtoEntity> list = repository.findAll();
+        if (list.isEmpty()) {
             System.out.println("Không có ô tô nào để hiển thị.");
+        } else {
+            for (OtoEntity oto : list) {
+                System.out.println(oto);
+            }
         }
     }
 
     @Override
-    public void deleteOto(String bienKiemSoatOto) {
-        List<PhuongTien> danhSach = repository.findAll();
+    public boolean deleteOto(String bienSo) {
+        List<OtoEntity> danhSach = repository.findAll();
         boolean deleted = false;
 
-        for (PhuongTien pt : danhSach) {
-            if (pt instanceof OtoEntity &&
-                    pt.getBienKiemSoat().equalsIgnoreCase(bienKiemSoatOto)) {
-                deleted = repository.deleteByBienSo(pt.getBienKiemSoat());
+        Iterator<OtoEntity> iterator = danhSach.iterator();
+        while (iterator.hasNext()) {
+            OtoEntity oto = iterator.next();
+            if (oto.getBienKiemSoat().equalsIgnoreCase(bienSo)) {
+                iterator.remove();
+                deleted = true;
                 break;
             }
         }
 
         if (deleted) {
-            System.out.println("Đã xóa ô tô có BKS: " + bienKiemSoatOto);
-        } else {
-            System.out.println("Không tìm thấy ô tô với BKS: " + bienKiemSoatOto);
+            repository.updateAll(danhSach);
         }
+
+        return deleted;
     }
 }

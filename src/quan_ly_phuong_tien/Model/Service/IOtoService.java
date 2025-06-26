@@ -5,5 +5,6 @@ import quan_ly_phuong_tien.Model.Entity.OtoEntity;
 public interface IOtoService {
     void addOto(OtoEntity oto);
     void displayOto();
-    void deleteOto(String bienKiemSoatOto);
+
+    boolean deleteOto(String bienKiemSoat);
 }
