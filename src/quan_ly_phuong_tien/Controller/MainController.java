@@ -1,4 +1,3 @@
-// === MainController.java ===
 package quan_ly_phuong_tien.Controller;
 
 import quan_ly_phuong_tien.Model.Entity.OtoEntity;
@@ -9,6 +8,7 @@ import quan_ly_phuong_tien.Model.Service.ImplXeMayService;
 import quan_ly_phuong_tien.Model.Service.ImplXeTaiService;
 
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class MainController {
     ImplOtoService implOtoService = new ImplOtoService();
@@ -50,8 +50,18 @@ public class MainController {
         System.out.print("Chọn loại phương tiện: ");
         int type = Integer.parseInt(scanner.nextLine());
 
-        System.out.print("Nhập biển kiểm soát: ");
-        String idVehicle = scanner.nextLine();
+        String idVehicle;
+        while (true) {
+            System.out.print("Nhập biển kiểm soát: ");
+            idVehicle = scanner.nextLine();
+
+            if (validateVehicleName(idVehicle)) {
+                break;
+            } else {
+                System.out.println("BKS không hợp lệ. Vui lòng nhập lại.");
+            }
+        }
+
         System.out.print("Nhập hãng sản xuất: ");
         String brand = scanner.nextLine();
         System.out.print("Nhập năm sản xuất: ");
@@ -83,6 +93,11 @@ public class MainController {
             default:
                 System.out.println("Không có loại phương tiện tương ứng.");
         }
+    }
+
+    public static boolean validateVehicleName(String vehicleName) {
+        String regex = "^[0-9]{2}[A-Z][0-9]-[0-9]{5}$";
+        return Pattern.matches(regex, vehicleName);
     }
 
     public void displayPhuongTien() {
@@ -175,5 +190,4 @@ public class MainController {
             }
         }
     }
-
 }
